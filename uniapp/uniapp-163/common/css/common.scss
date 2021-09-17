@@ -1,0 +1,12 @@
+page {
+	background-color: #CCCCCC;
+}
+view {
+	box-sizing: border-box;
+}
+.flex-box{
+	display: flex;
+	.flex-item{
+		flex: 1;
+	}
+}
