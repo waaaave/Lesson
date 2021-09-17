@@ -1,5 +1,9 @@
+let a = 1;
 function createCounter() {
+    //闭包
     let counter = 0;
+    //词法作用域
+    a++;
     const myFunction = function () {
         counter = counter + 1;
         return counter
