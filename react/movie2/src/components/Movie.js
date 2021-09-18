@@ -1,7 +1,8 @@
-const Movie = () => {
+const Movie = (props) => {
+    console.log(props.movie, '--+++++--------')
     return (
         <>
-            Movie
+            {props.movie.Title}
         </>
     )
 }
