@@ -20,7 +20,7 @@
 			<view class="flex-item" v-for="(item, index) in contentBar" :key="index">
 				<image class="img" :src="'/static/image/index/t_'+ (index + 1) + '.png'"></image>
 				<view>{{item.name}}</view>
-				<view class="date" v-if="index==0">17</view>
+				<view class="date" v-if="index==0">19</view>
 			</view>
 		</view>
 	</view>
