@@ -1,0 +1,47 @@
+/* ~直指 node_modules */
+@import "~antd/dist/antd.css";
+
+@media all and (min-width: 576px) {
+  .wrap {
+    margin: 0 10px;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .wrap {
+    margin: 0 15px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .wrap {
+    margin: 0 20px;
+  }
+  .wrap .topic_list {
+    background-color: #fff;
+    padding: 0 20px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .wrap {
+    width: 980px;
+    margin: 0 auto;
+  }
+  .wrap .topic_list {
+    background-color: #fff;
+    padding: 0 30px;
+  }
+}
+
+@media all and (min-width: 1600px) {
+  .wrap {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .wrap .topic_list {
+    background-color: #fff;
+    padding: 0 30px;
+  }
+}
