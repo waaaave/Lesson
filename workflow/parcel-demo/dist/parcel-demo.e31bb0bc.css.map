@@ -1,0 +1,1 @@
+{"version":3,"sources":["common.styl"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA","file":"parcel-demo.e31bb0bc.css","sourceRoot":"..","sourcesContent":["html,\nbody {\n  height: 100vh;\n  background: #008000;\n}\n"]}
