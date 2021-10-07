@@ -79,11 +79,12 @@ var try_it = function(){
 }
 try_it();
 
-var hanoi = function(disc,a,b,c){
+var hanoi = function(disc,src,aux,dst){
     if (disc>0) {
-        hanoi(disc - 1,a,c,b);
-        console.log('move disc ' + disc + ' from ' + a + ' to ' + c);
-        hanoi (disc - 1,b,a,c);
+        hanoi(disc - 1,src,dst,aux);
+        console.log('move disc ' + disc + ' from ' + src + ' to ' + dst);
+        hanoi (disc - 1,aux,src,dst);
     }
 }
-hanoi(5,'a','b','c')
+hanoi(3,'Src','Aux','Dst')
+console.log(hanoi(3,'Src','Aux','Dst'));
