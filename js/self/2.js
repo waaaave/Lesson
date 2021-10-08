@@ -7,14 +7,7 @@ var myObject = {
     increment:function(inc){
         this.value += typeof inc === 'number' ? inc :1;
     },
-    double :function(){
-        var that = this;
-        
-        var helper = function(){
-            that.value = add(that.value,that.value);
-        };
-        helper();
-    }
+    
 }
 myObject.increment();
 console.log(myObject.value);
@@ -25,6 +18,14 @@ console.log(myObject.value);
 var sun = add (3,4);
 console.log(sun);
 
+myObject.double =function(){
+    var that = this;
+    
+    var helper = function(){
+        that.value = add(that.value,that.value);
+    };
+    helper();
+}
 myObject.double(3);
 console.log(myObject.value);
 
@@ -86,4 +87,100 @@ var hanoi = function(disc,a,b,c){
         hanoi (disc - 1,b,a,c);
     }
 }
-hanoi(5,'a','b','c')
+hanoi(2,'a','b','c')
+
+var walk_the_DOM = function walk (node,func) {
+    func(node);
+    node = node.firstChild;
+    while(node){
+        walk(node,func);
+        node = node.nextSibling;
+    }
+}
+
+var getElementByAttribute = function (att,value){
+    var results = [];
+    walk_the_DOM(document.body,function(node){
+        var actual = node.nodeType === 1 && node.getElementByAttribute(att);
+        if (typeof actual === 'string' && (actual === value || typeof value !== 'string')) {
+            results.push(node);
+        }
+    });
+    return results;
+}
+
+// var fade = function(node){
+//     var level = 1;
+//     var step = function(){
+//         var hex = level.toString(16);
+//         node.style.backgroundColor = '#FFFF' + hex + hex;
+//         if (level<15){
+//             level +=1;
+//             setTimeout(step,100);
+//         }
+//     };
+//     setTimeout(step,100);
+// };
+// fade(document.body);
+
+// var deentityify = function (){
+//     var entity ={
+//         quot:'"',
+//         lt:'<',
+//         gt:'>'
+//     };
+//     return function(){
+//         return this.replace(/&([^&;]+);/g,
+//         function(a,b){
+//             var r = entity[b];
+//             return typeof r === 'string' ? r : a;
+//         }
+//         );
+//     };
+// }();
+// console.log('&lt;&quot;&gt;'.deentityify(  ));
+
+var serial_maker = function (){
+    var prefix = '';
+    var seq = 0 ;
+    return{
+        set_prefix : function (p) {
+            prefix = String(p);
+        },
+        set_seq : function (s) {
+            seq = s;
+        },
+        gensym : function () {
+            var result = prefix +seq;
+            seq += 1 ;
+            return result;
+        }
+    }
+}
+
+var seqer = serial_maker();
+seqer.set_prefix('Q');
+seqer.set_seq(1000);
+var unique = seqer.gensym();
+console.log(unique);
+
+// getElement('myBoxDiv').
+//     move(350,150).
+//     width(100).
+//     height(100).
+//     color('red').
+//     border('10px outset').
+//     padding('4px').
+//     appendText("Please staand by").
+//     on('mousedown',function (m) {
+//         this.startDrag(m,this.getNinth(m));
+//     }).
+//     on('mousemove','drag').
+//     on('mouseup','stopDrag').
+//     later(200,function () {
+//         this.
+//             color('yellow').
+//             setHTML("What hath God wraught?").
+//             slide(400,40,200,200);
+//     }).
+//     tip('This box is resizeable');
