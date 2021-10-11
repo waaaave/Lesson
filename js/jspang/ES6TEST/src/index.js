@@ -54,3 +54,17 @@
 // arr2.push('xtk');
 // console.log(arr2);
 // console.log(arr1);
+
+// function wave(...arg){
+//     console.log(arg[0]);
+//     console.log(arg[1]);
+//     console.log(arg[2]);
+// }
+
+// wave(1,2,3);
+
+function wave(first,...arg){
+    console.log(arg.length);
+    console.log(arg);
+}
+wave(0,1,2,3,4,5,6,7) //7

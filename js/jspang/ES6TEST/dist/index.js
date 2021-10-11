@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // var a = "wave";
 // var b = "wave";
@@ -50,9 +50,27 @@
 // arr2.push('xtk');
 // console.log(arr1);
 
-var arr1 = ['www', 'wave', 'com'];
-var arr2 = [].concat(arr1);
-console.log(arr2);
-arr2.push('xtk');
-console.log(arr2);
-console.log(arr1);
+// let arr1 = ['www','wave','com'];
+// let arr2=[...arr1];
+// console.log(arr2);
+// arr2.push('xtk');
+// console.log(arr2);
+// console.log(arr1);
+
+// function wave(...arg){
+//     console.log(arg[0]);
+//     console.log(arg[1]);
+//     console.log(arg[2]);
+// }
+
+// wave(1,2,3);
+
+function wave(first) {
+    for (var _len = arguments.length, arg = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        arg[_key - 1] = arguments[_key];
+    }
+
+    console.log(arg.length);
+    console.log(arg);
+}
+wave(0, 1, 2, 3, 4, 5, 6, 7); //7
