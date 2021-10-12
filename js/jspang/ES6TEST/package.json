@@ -4,7 +4,8 @@
   "description": "es6学习代码",
   "main": "index.js",
   "scripts": {
-    "build": "babel src/index.js -o dist/index.js"
+    "build": "babel src/index.js -o dist/index.js",
+    "build1": "babel src/1.js -o dist/1.js"
   },
   "keywords": [],
   "author": "wave",
