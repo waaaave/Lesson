@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import propTypes  from 'prop-types';
+
 class XiaojiejieItem extends Component {
     constructor(props){
         super(props)
@@ -6,12 +8,25 @@ class XiaojiejieItem extends Component {
     }
     render() { 
         return (
-            <li onClick={this.handleClick.bind(this)}>{this.props.content}</li>
+            <li onClick={this.handleClick.bind(this)}>
+            {this.props.avname}为你服务-{this.props.content}
+            </li>
         );
     }
     handleClick(){
         this.props.deleteItem(this.props.index)
     }
 }
- 
+
+XiaojiejieItem.propTypes = {
+    avname:propTypes.string.isRequired,
+    content:propTypes.string,
+    index:propTypes.number,
+    deleteItem:propTypes.func
+}
+
+XiaojiejieItem.defaultProps = {
+    avname: '28号技师'
+}
+
 export default XiaojiejieItem;
