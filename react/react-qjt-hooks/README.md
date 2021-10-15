@@ -6,7 +6,7 @@
         不会去到服务器
         1. route switch ->page component 显示html
 
-        后端路由 url HTTP 请求 定位资源 Request  Response 不返回HTML
+        后端路由 url HTTP 请求 定位资源 Request  Response 返回页面
 
         2. js 本地? index.js -> app.js ->page.js
         提供接口 在 useEffect 生命周期的时候 axiox xhr 请求JSON
