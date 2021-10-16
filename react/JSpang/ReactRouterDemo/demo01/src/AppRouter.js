@@ -1,20 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
-
-function Index(){
-    return(
-        <>
-            <h2>wave</h2>
-        </>
-    )
-}
-function List(){
-    return(
-        <>
-        <h2>listpage</h2>
-        </>
-    )
-}
+import Index from './Pages/Index';
+import List from './Pages/List';
+import Home from './Pages/Home';
 
 function AppRouter(){
     return(
@@ -24,7 +12,8 @@ function AppRouter(){
                 <li><Link to="/list">列表</Link></li>
             </ul>
             <Route path='/' exact component={Index}></Route>
-            <Route path='/list' exact component={List}></Route>
+            <Route path='/list/:id' component={List}></Route>
+            <Route path='/home' component={Home}></Route>
 
         </Router>
     )
