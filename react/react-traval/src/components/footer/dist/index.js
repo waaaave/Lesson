@@ -10,8 +10,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 exports.__esModule = true;
-__exportStar(require("./header"), exports);
-__exportStar(require("./footer"), exports);
-__exportStar(require("./sideMenu"), exports);
-__exportStar(require("./carousel"), exports);
-__exportStar(require("./productCollection"), exports);
+__exportStar(require("./Footer"), exports);
