@@ -42,7 +42,7 @@ class TodoList extends Component {
         const action = {
             type:'changeInput',
             value:e.target.value
-        }
+        } 
         store.dispatch(action)
     }
     clickBtn(){
