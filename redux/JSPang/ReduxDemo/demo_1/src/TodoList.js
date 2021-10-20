@@ -3,13 +3,14 @@ import 'antd/dist/antd.css'
 import { Input, Button, List } from 'antd'
 import store from './store';
 
-
-
-
 class TodoList extends Component {
     constructor(props) {
         super(props)
-        this.state = store.getState()
+        // console.log(store.getState());
+        this.state = {
+           ...store.getState()
+        };
+        // console.log(this.state);
         this.changeInputValue = this.changeInputValue.bind(this)
         this.storeChange = this.storeChange.bind(this)
         this.clickBtn = this.clickBtn.bind(this)
@@ -32,7 +33,7 @@ class TodoList extends Component {
                     <List
                         bordered
                         dataSource={this.state.list}
-                        renderItem={item => (<List.Item>{item}</List.Item>)}
+                        renderItem={(item,index)=>(<List.Item onClick={this.deleteItem.bind(this,index)}>{item}</List.Item>)}
                     />
                 </div>
             </div>
@@ -49,9 +50,20 @@ class TodoList extends Component {
         const action = {type:'addItem'}
         store.dispatch(action)
     }
-
-    storeChange(){
-        this.setState(store.getState())
+    deleteItem(index){
+        const action = {
+            type:'deleteItem',
+            index
+        }
+        store.dispatch(action)
+    }
+    storeChange () {
+        // console.log(store.getState())
+     
+        this.setState({
+            ...this.state,
+            ...store.getState()
+        })
     }
 
 }
