@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1><%= title %></h1>
+  <% if(isLogined) { %>
+    <%=loginUser%>,<a href="/logout">退出登录</a>
+  <% } else {%>
+    <form method="post" name="loginForm" action="/login">
+      <input type="text" id="name"name="name"value=""/>
+      <input type="password" id="password" name="password" value=""/>
+      <input type="submit" value="登录" id="login" />
+    </form>
+  <% }%>
+  <script>
+  const oForm = document.forms["loginForm"];
+  oForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // console.log(oForm["name"], '----------------')
+    const name = oForm["name"].value.trim();
+    const password = oForm["password"].value.trim();
+    if (!name || !password) {
+      alert('请输入用户名和密码');
+      return ;
+    }
+    // 请使用ajax post  提交表单 
+    // js 主动的向后端发送请求 
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", '/login');
+    xhr.setRequestHeader('Content-type',
+     "application/x-www-form-urlencoded");
+    // var formData = new FormData();
+    // formData.append('name', name);
+    // formData.append('password', password);
+    xhr.send(`name=${name}&password=${password}`);// get 不用传
+
+  });
+  </script>
+</body>
+</html>
