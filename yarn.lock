@@ -14,6 +14,13 @@ at-least-node@^1.0.0:
   resolved "https://registry.npm.taobao.org/at-least-node/download/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha1-YCzUtG6EStTv/JKoARo8RuAjjcI=
 
+axios@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.npmmirror.com/axios/download/axios-0.23.0.tgz?cache=0&sync_timestamp=1634053173003&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Faxios%2Fdownload%2Faxios-0.23.0.tgz#b0fa5d0948a8d1d75e3d5635238b6c4625b05149"
+  integrity sha1-sPpdCUio0ddePVY1I4tsRiWwUUk=
+  dependencies:
+    follow-redirects "^1.14.4"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -128,6 +135,11 @@ envinfo@7.7.3:
   version "7.7.3"
   resolved "https://registry.npm.taobao.org/envinfo/download/envinfo-7.7.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fenvinfo%2Fdownload%2Fenvinfo-7.7.3.tgz#4b2d8622e3e7366afb8091b23ed95569ea0208cc"
   integrity sha1-Sy2GIuPnNmr7gJGyPtlVaeoCCMw=
+
+follow-redirects@^1.14.4:
+  version "1.14.4"
+  resolved "https://registry.nlark.com/follow-redirects/download/follow-redirects-1.14.4.tgz?cache=0&sync_timestamp=1631622129411&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.14.4.tgz#838fdf48a8bbdd79e52ee51fb1c94e3ed98b9379"
+  integrity sha1-g4/fSKi73XnlLuUfsclOPtmLk3k=
 
 fs-extra@9.0.1:
   version "9.0.1"
