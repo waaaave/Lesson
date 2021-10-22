@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="nav">
+        <a href="/page1">page1</a>
+        <a href="/page2">page2</a>
+        <a href="/page3">page3</a>
+        <a href="/page4">page4</a>
+        <a href="/page5">page5</a>
+    </div>
+    <div id="container"></div>
+    <script>
+        class HistoryRouter{
+            constructor(){
+                this.routes = {};
+                this.listenLink();
+                this.listenPopState();
+            }
+            listenPopState(){
+                window.addEventListener('popstate',(e)=>{
+                    let state = e.state ||{},
+                    path = state.path ||'';
+                    this.dealPathHandler(path);
+                })
+            }
+            listenLink(){
+                // let links = document.querySelectorAll('a');
+                // links.forEach((link)=>{
+                //     link.addEventListener('click',(e)=>{
+                //         e.preventDefault();
+                //     })
+                // })
+                window.addEventListener('click',(e)=>{
+                    let dom = e.target
+                    if(dom.nodeName =='A' && dom.getAttribute('href')){
+                        e.preventDefault();
+                        this.assign(dom.getAttribute('href'))
+                    }
+                    console.log(e);
+                })
+
+            }
+            assign(path){
+                // URL 改变并且不跳转  访问栈插入了一条记录
+                history.pushState({path},null,path)
+                this.dealPathHandler(path);
+            }
+            dealPathHandler(path){
+                let handler = this.routes[path];
+                handler();
+            }
+            register(path,callback=function(){}){
+                this.routes[path] = callback.bind(this);
+            }
+        }
+        const router = new HistoryRouter();
+        let container = document.getElementById('container');
+        router.register('/page1',()=> container.innerHTML = '我是page1');
+        router.register('/page2',()=> container.innerHTML = '我是page2');
+        router.register('/page3',()=> container.innerHTML = '我是page3');
+        router.register('/page4',()=> container.innerHTML = '我是page4');
+        router.register('/page5',()=> container.innerHTML = '我是page5');
+    </script>
+</body>
+</html>
