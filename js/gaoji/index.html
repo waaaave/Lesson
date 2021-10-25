@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  body {
+    /* text-align: center; */
+    /* display: flex;
+    justify-content: center; */
+  }
+  .box {
+    /* display: table; */
+    /* display: inline; */
+    /* margin: 0 auto; */
+  }
+  </style>
+</head>
+<body>
+  <!-- <div class="box">选择颜色</div>  -->
+  选择颜色 
+  <select id="colorSelect">
+    <option value="">请选择</option>
+    <option value="red">红色</option>
+    <option value="blue">蓝色</option>
+  </select>
+  <br>
+  <select id="memorySelect">
+    <option value="">请选择</option>
+    <option value="32G">32G</option>
+    <option value="16G">16G</option>
+  </select>
+  请输入购买数量 <input type="text" id="numberInput" value="0"> <br>
+  您选择了颜色 <div id="colorInfo"></div>
+  您输入了数量 <div id="numberInfo"></div>
+  <button id="nextBtn">请选择手机颜色和购买数量</button>
+  
+  <script>
+  // var colorSelect = document.getElementById('colorSelect'),
+  //   numberInput = document.getElementById('numberInput'),
+  //   colorInfo = document.getElementById('colorInfo'),
+  //   numberInfo = document.getElementById('numberInfo'),
+  //   nextBtn = document.getElementById('nextBtn');
+
+  // var goods = {
+  //   "red": 3,
+  //   "blue": 6
+  // }
+
+  // colorSelect.onchange = function() {
+  //   var color = this.value;
+  //   var number = parseInt(numberInput.value);
+ 
+  //   var stock = goods[color];
+    
+  //   colorInfo.innerHTML = color;
+  //   if (!color) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '请选择手机颜色';
+  //     return;
+  //   }
+  //   if (number <= 0) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '请输入正确的购买数量';
+  //     return;
+  //   }
+  //   if (number > stock) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '库存不足';
+  //     return;
+  //   }
+
+  //   nextBtn.disabled = false;
+  //   nextBtn.innerHTML = '放入购物车';
+  //   // if (stock)
+  // }
+  // numberInput.oninput = function(){
+  //   var color = colorSelect.value,
+  //   number = this.value,
+  //   stock = goods[color];
+
+  //   numberInfo.innerHTML = number;
+
+  //   if (!color) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '请选择手机颜色';
+  //     return;
+  //   }
+  //   if (number <= 0) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '请输入正确的购买数量';
+  //     return;
+  //   }
+  //   if (number > stock) {
+  //     nextBtn.disabled = true;
+  //     nextBtn.innerHTML = '库存不足';
+  //     return;
+  //   }
+
+  //   nextBtn.disabled = false;
+  //   nextBtn.innerHTML = '放入购物车';
+  //   // if (stock)
+  
+  // }
+
+  var goods = {
+    'red|32G':3,
+    'red|16G':0,
+    'blue|32G':1,
+    'blue|16G':6,
+  }
+
+  
+  </script>
+</body>
+</html>
