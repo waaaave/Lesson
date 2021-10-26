@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const url = 'http://localhost:3000'
+    const data = { username:'格格' }
+    const myHeaders = new Headers({
+      'X-Custom-Header':'xxx'
+    })
+    fetch(url,{
+      method:'POST',
+      body:JSON.stringify(data),
+      headers:myHeaders,
+      mode:'cors'
+    }).then(res => res.JSON())
+    .then(res =>{
+      console.log(JSON.parse(res.postData));
+    })
+  </script>
+</body>
+</html>
