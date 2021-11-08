@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .button{
+      margin: 100px;
+      appearance: none;/*外表 把表单类元素重新设置样式 不收浏览器默认行为的影响 */
+      position: relative;
+      background-color: #f72359;
+      padding: 1em 2em;/*相对自身的字体大小的长度单位*/
+      color: white;
+      font-size: 1.2em;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;/*轮廓 border 是盒模型的一份子，不会找有盒子模型的分配 outline 不会影响盒模型（ie dom1 dom2 | 标准盒模型 怪异盒模型）*/
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .button::before{
+      
+      /* 不知用js动态修改before位置 */
+      --size:0;/*css next*/
+      content: '';
+      position: absolute;
+      left: var(--x);
+      right: var(--y);
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle closest-side, #4405f7, transparent);
+      transform: translate(-50%,-50%);
+      transition: width .2s ease ,height .2s ease;
+    }
+    .button:hover::before{
+      --size: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="button">
+    Hover me I'm awesome
+  </div>
+  <script>
+    document.querySelector('.button')
+      .onmousemove = (e) => {  
+        //相对于页面的偏移 
+        const x = e.pageX - e.target.offsetLeft;
+        const y = e.pageY - e.target.offsetTop;
+        //css样式变量
+        e.target.style.setProperty('--x',`${x}px`)
+        e.target.style.setProperty('--y',`${y}px`)
+      }
+  </script>
+</body>
+</html>
