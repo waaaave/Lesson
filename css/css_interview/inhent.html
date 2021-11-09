@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css 继承</title>
+  <style>
+    /* 继承 继承是一个能力
+        那些属性值 inherit
+        那些属性可以继承？
+          font-size font-family color
+
+        不可以继承？
+
+    */
+    body {
+      /* font-style: ;
+      font-weight: ;
+      font-size: ;
+      line-height: ;
+      font-family */
+      font: italic bold 12px/20px arial,sans-serif;
+      height: 100vh;/* 不能继承 因为页面是文档流构成的 html=dom+css结构 */
+    }
+    div {
+      font-size: 18px;
+      height: inherit;/* inline block inline-block */
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div> EDG牛逼!!! </div>
+</body>
+</html>
