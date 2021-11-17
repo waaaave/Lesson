@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="p">首先需要一些待删除的东西</p>
+  <ul id="l">
+    <li>其次，他们的类型</li>
+    <li>也需要有一些些不同</li>
+    <li>我就随便举几个例子</li>
+  </ul>
+  <a href="#" id="a">然后，你需要一个按钮</a>
+  <button onclick="deleteP()">删除P标签</button>
+  <button onclick="deleteL()">删除列表</button>
+  <button onclick="deleteA()">删除A标签</button>
+<script>
+  function deleteL(){
+    document.getElementById("l").remove();
+  }
+  function deleteP(){
+    document.getElementById("p").remove();
+    console.log('---------------------');
+  }function deleteA(){
+    document.getElementById("a").remove();
+    console.log('---------------------');
+  }
+</script>
+</body>
+</html>
