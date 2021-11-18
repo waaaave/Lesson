@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <form name="infoForm">
+      <fieldset>
+        <legend>客户意见表</legend>
+        <div class="form-group">
+          <label>兑换卡类型</label>
+          <input type="text" name="539" class="form-control" placeholder="请输入兑换卡类型">
+        </div>
+        <div class="form-group">
+          <label>推荐人</label>
+          <input type="text" name="540" class="form-control" placeholder="推荐人">
+        </div>
+        <div class="form-group">
+          <label>地址</label>
+          <input type="text" name="546" class="form-control" placeholder="地址">
+        </div>
+        <button class="btn btn-default" type="submit">SUBMIT</button>
+      </fieldset>
+    </form>
+  </div>
+  <script>
+    // 用 ajax提交数据应该怎么做
+    let signInfo = [
+      {
+        fildId: 539,
+        value: undefined
+      },
+      {
+        fildId: 540,
+        value: undefined
+      },
+      {
+        fildId: 546,
+        value: undefined
+      }
+    ];
+    const oForm = document.forms["infoForm"];
+    oForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const formData = new FormData(oForm);
+      if (formData.get('539')) {
+        signInfo[0].value = formData.get('539')
+      }
+      if (formData.get('540')) {
+        signInfo[1].value = formData.get('540')
+      }
+      if (formData.get('546')) {
+        signInfo[2].value = formData.get('546')
+      }
+      // 怎么发到服务器端 序列化
+      let str = JSON.stringify(signInfo);
+      console.log(str);
+      fetch('/info?data=' + str)
+      .then(data => data.json())
+      .then(data => {
+        console.log(data);
+      })
+    // console.log(signInfo, '----------------');
+  })
+  </script>
+</body>
+</html>
