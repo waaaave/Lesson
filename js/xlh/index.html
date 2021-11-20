@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <form name="loginForm">
+    <div class="form-group">
+      <!-- 无障碍 所以用for 把用户当小白所以用placeholder-->
+      <label for="email">Email</label>
+      <input type="email" 
+      name="email"
+      placeholder="请输入邮箱"
+      id="email" required class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password" class="password">password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="请输入密码"
+        required minlength="6"
+        maxlength="16"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">card</label>
+      <input
+        type="text"
+        name="card"
+        placeholder="请输入卡号"
+        disabled
+        id="card"
+        required minlength="6"
+        maxlength="16"
+        class="form-control">
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="remember" > Remember me
+      </label>
+      <!-- <label>
+        <input type="checkbox" name="favor" value="2">pdd
+      </label> -->
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="favor" value="1">55k
+      </label>
+      <label>
+        <input type="checkbox" name="favor" value="2">pdd
+      </label>
+      <label>
+        <input type="checkbox" name="favor" value="3">jk
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-default">submit</button>
+    <script>
+      HTMLFormElement.prototype.serialize = function(){
+        // console.log(this,'-----------');
+        var form = this;
+        var arrFormData = [],
+            objFormData = {};
+        // 类数组
+        [].slice.call(form.elements).forEach(function(ele){
+          // console.log(ele);
+          var type = ele.type,disabled = ele.disabled;
+          var name = ele.name, value = encodeURIComponent(ele.value || 'on')
+          if (!name 
+          || disabled 
+          || !type 
+          || (/^reset|submit|image$/i.test(type) 
+          || (/^checkbox|radio$/i.test(type) && !ele.checked))) {
+            return
+          }
+          type = type.toLowerCase();
+          if (type !== 'select-multiple') {
+            if (objFormData[name]) {
+              objFormData[name].push(value);
+            }else {
+            objFormData[name] = [value]
+            }
+          } else{
+
+          }
+        });
+        console.log(objFormData,'-----------------');
+        // form.elements.forEach(function(ele){
+        //   console.log(ele);
+        // });
+        // console.log(Object.prototype.toString.call(form.elements));
+          for(var key in objFormData){
+            arrFormData.push(key + '=' + objFormData[key].join())
+          }
+          return arrFormData.join('&');
+      }
+
+      const oForm = document.forms["loginForm"];
+      oForm.addEventListener('submit',function(event){
+        event.preventDefault();
+        // 收集表单的数据 {name:value}
+        // JSON.stringify()
+        // fetch(url?data=)
+        // this __proto__
+        console.log(this.__proto__);
+        let dataStr = this.serialize();
+        console.log(dataStr);
+      })
+    </script>
+  </form>
+</body>
+</html>
