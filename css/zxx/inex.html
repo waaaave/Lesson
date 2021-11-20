@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-size: 14px;
+    line-height: 1.42858;
+  }
+  .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background:url(https://www.zhangxinxu.com/study/201603/delete.png) no-repeat center;
+    vertical-align: middle;
+    background-size: 100%;
+  }
+  p::after{
+    content:"";
+    height: 100px;
+    vertical-align: middle;
+  }
+  /* .icon::before{
+    content: '\3000';
+  } */
+  </style>
+</head>
+<body>
+  <strong>图标对齐</strong>
+  <p>
+    <i class="icon"></i>
+    删除
+  </p>
+  <script>
+    const op = document.getElementsByTagName('p')[0];
+    console.log(op.childNodes[1].nodeType, op.childNodes[2].nodeType);
+  </script>
+</body>
+</html>

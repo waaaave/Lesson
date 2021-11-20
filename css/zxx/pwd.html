@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    meter{
+      width: 120px;
+      border: 0;
+      position: relative;
+      --gradient:linear-gradient(to right,red 39px,transparent 0 41px,orange 0 79px, transparent 0 81px, green 0);
+      
+    }
+    meter::after{
+      content: "弱 中 强 aaaaaaaaaaaaaaaaaaaaaa";
+      position: absolute;
+      font-size: 14px;
+      line-height: 20px;
+      height: 20px;
+      overflow: hidden;
+      left: calc(20px - .5em);
+      right: calc(20px - .5em);
+      text-align: justify;
+      background:var(--gradient) calc(.5em - 20px)/120px;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      
+    }
+    ::-webkit-meter-bar{
+      width: 120px;
+      height: 12px;
+      border: 0;
+      background-color: #eee;
+      -webkit-mask: var(--gradient);
+    }
+  </style>
+</head>
+<body>
+  密码: <input type="password" id="pwd">
+  <meter id="meter" min="0" max="12" low="4" high="8" optimum="10" value="0" >
+  <script src="https://cdn.bootcdn.net/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+  <script>
+    pwd.addEventListener('input',function(){
+      var value = this.value;
+      meter.value = zxcvbn(value).guesses_log10
+    })
+  </script>
+</body>
+</html>
