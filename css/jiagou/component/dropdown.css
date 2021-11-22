@@ -1,0 +1,14 @@
+.dropdown{
+  cursor: pointer;
+  position: relative;
+  display:inline-block;
+  outline: none;
+}
+
+.dropdown .menu{
+  cursor: auto;
+  position: absolute;
+  display: none;
+  outline: none;
+  
+}

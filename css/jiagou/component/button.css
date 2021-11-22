@@ -1,0 +1,13 @@
+.btn{
+  display: block;
+  color: black;
+  background-color: transparent;
+}
+.btn.disabled{
+  pointer-events: none;
+}
+
+.btn-primary{
+  background: blue;
+  color: white;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input[type="file"]{
+      color: red;
+      padding: 20px;
+    }
+    .upload_container{
+      position: relative;
+      width: 150px;
+      text-align: center;
+    }
+    .upload_container p{
+      border-radius: 20px;
+      z-index: 0;
+      width: 100%;
+      background-color: #00bfff;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 12px;
+    }
+    .upload_container input{
+      opacity: 0;
+      width: 100%;
+      position: absolute;
+      padding: 0;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <input type="file">
+  <div class="upload_container">
+    <p>上传文件</p>
+    <input type="file">
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* 如何组织css代码 */
+@import './vendors/bootstrap.min.css';
+/* PC bootstrap Mobile WEUIcss lib
+  全栈式组件化lib vant antd element-ui
+  管理后台 antd
+  手机网站 vant
+*/
+/* 职责分离 base */
+@import './base/reset.css';
+@import './base/typography.css';
+
+@import './component/button.css';
+@import './component/dropdown.css';
+
+@import './utils/variables';
+@import './utils/utils.css';
+
+@import './pages/login.css';
+
+@import './layout/header.css'

@@ -1,0 +1,8 @@
+header{
+  display: flex;
+  padding: 1rem;
+  font-size:2rem;
+  line-height: 2rem;
+  color: #000;
+  background-color: #fff;
+}

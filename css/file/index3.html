@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input[type="file"]{/* css选择器*/
+      color: transparent;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      width: 107px;
+    }
+    /* 可能存在兼容性问题 */
+    input[type="file"]::file-selector-button{
+      font-weight: 500;
+      color: #fff;
+      background-color: #409eff;
+      border-color: #409eff;
+      padding: 6px 25px;
+      cursor: pointer;
+
+    }
+  </style>
+</head>
+<body>
+  <input type="file" />
+</body>
+</html>
