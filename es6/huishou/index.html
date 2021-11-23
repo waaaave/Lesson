@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://bookcover.yuewen.com/qdbimg/349573/1027030348/180" alt="" id="img"> 
+    <script>
+        var eleImage = document.getElementById('img'); // 每引用移除会 +1
+        eleImage.remove();
+        // eleImage.parentNode.removeChild(eleImage);
+        // console.log(eleImage.outerHTML);
+        var storage = { // 存储
+            // +1 
+            arrDom: [eleImage, eleImage.outerHTML]
+        }
+        // 因为有storage 的引用， null 失效了 只是 -1 其核心是计数器
+        eleImage = null; // js 手动回收内存的做法
+        storage.arrDom[0] = null;
+
+
+        // display:none; 离开文档流 
+        setTimeout(() => {
+            // document.body.appendChild(eleImage);
+            document.body.appendChild(storage.arrDom[0]);
+        }, 2000)
+    </script>
+</body>
+</html>
