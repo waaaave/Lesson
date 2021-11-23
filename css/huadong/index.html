@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  [data-type="danger"] {
+    background-color: #eb4646;
+  }
+  [data-type="import"] {
+    background-color: #469beb;
+  }
+  [data-type="warning"] {
+    background-color: #f58b00;
+  }
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+  .list {
+    display: flex;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    overflow-y: hidden;
+  }
+  .content {
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    flex: 0 0 calc(100vw - 2rem);
+    font-size: 1rem;
+    color: inherit;
+    background-color: #fff;
+    box-shadow: 0 1px #fff, 0 -1px #fff;
+    position: relative;
+  }
+  .space {
+    flex: 0 0 4rem;
+  }
+  .button {
+    position: absolute;
+    right: 0;
+    border: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: #fff;
+    width: 4rem;
+    height: 2.5rem;
+    outline: 0;
+  }
+    .scroll-nap{
+      scroll-snap-type: x mandatory;
+    }
+    .scroll-nap .space{
+      scroll-snap-align: end;
+    }
+    .scroll-nap .content{
+      scroll-snap-align: start;
+    }
+    .space:nth-child(4){
+      flex: 0 0 8rem;
+    }
+    .space:nth-child(5){
+      flex: 0 0 12rem;
+    }
+    .button:nth-of-type(2){
+      position: absolute;
+      right: 4rem;
+    }
+    .button:nth-of-type(3){
+      position: absolute;
+      right: 8rem;
+    }
+    .perspective{
+      perspective: 1px;
+      transform-style: preserve-3d;
+      perspective-origin: 100% 50%;
+    }
+    .perspective .button:last-of-type{
+      transform: translate3d(2rem, 0, -1px) scale(2);
+    }
+    
+    .perspective .button:first-of-type{
+      transform: translate3d(2rem, 0, -3px) scale(4);
+    }
+  </style>
+</head>
+<body>
+  <div class="list">
+    <button class="button" data-type="danger" >删除</button>
+    <a href="javascript:;" class="content">我是列表，试试左滑我</a>
+    <s class="space"> </s>
+  </div>
+  <br>
+  <hr>
+  <div class="list scroll-nap">
+    <button class="button" data-type="danger" >删除</button>
+    <a href="javascript:;" class="content">我是列表，试试左滑我</a>
+    <s class="space"> </s>
+  </div>
+  <br>
+  <hr>
+  <div class="list scroll-nap">
+    <button class="button" data-type="danger" >删除</button>
+    <button class="button" data-type="warning" >隐藏</button>
+    <button class="button" data-type="import" >置顶</button>
+    <a href="javascript:;" class="content">我是列表，试试左滑我</a>
+    <s class="space"> </s>
+  </div>
+  <br>
+  <hr>
+  <div class="list scroll-nap perspective">
+    <button class="button" data-type="danger" >删除</button>
+    <button class="button" data-type="warning" >隐藏</button>
+    <a href="javascript:;" class="content">我是列表，试试左滑我</a>
+    <s class="space"> </s>
+  </div>
+</body>
+</html>
