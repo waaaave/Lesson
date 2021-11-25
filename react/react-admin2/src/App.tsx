@@ -10,7 +10,9 @@ function App() {
   useEffect(() =>{
     const fn = async () => { // 函数式编程思想
       // 通同源策略 ，职责分离 一个文件只有哦一件事
-      await apiLogin({username:'root',password:'123456'})
+      const result = await apiLogin({username:'root',password:'123456'})
+      console.log(result);
+      
     }
     fn();
     // return 
