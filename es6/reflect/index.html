@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="ele">
+  <script>
+    // ele.value = '喵喵'
+    // Object.defineProperty
+    Reflect.set(ele, 'value', '喵喵');
+    // [object HTMLInputElement]
+    // HTMLInputElement.prototype.aha =function() {
+    //   console.log("aha");
+    // }
+    // console.log(Object.prototype.toString.call(ele));
+    // console.log(ele.aha());
+    ele.addEventListener('change', function(){
+      console.log(this.value);
+      
+    })
+  </script>
+</body>
+</html>

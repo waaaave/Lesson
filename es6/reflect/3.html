@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="ele">
+  <script>
+    const ele = document.getElementById('ele');
+    Object.defineProperty(ele,'type',{
+      // 没有加set就是不可改的，被认为是只读
+      get(){
+        console.log('---------');
+        return this.getAttribute('type') || 'text';
+      }
+    })
+    // console.log(ele.type);
+    // ele.type = 'number';
+    // console.log(ele.type);
+    Reflect.set(ele, 'type', 'number'); // 会提示成功、失败
+  </script>
+</body>
+</html>
