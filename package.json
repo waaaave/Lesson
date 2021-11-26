@@ -3,6 +3,8 @@
     "axios": "^0.23.0",
     "create-react-app": "^4.0.3",
     "global": "^4.4.0",
+    "koa": "^2.13.4",
+    "koa-router": "^10.1.1",
     "vite": "^2.6.13"
   }
 }

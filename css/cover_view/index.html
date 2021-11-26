@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .card{
+      width: 400px;
+    }
+    .card img{
+      width: 100%;
+    }
+    figure{
+      display: inline-grid;
+    }
+    .card figcaption{
+      color: white;
+      align-self: end;
+      line-height: 2;
+      background-color: #000900;
+      color: #fff;
+      text-align: center;
+    }
+    figure>img,
+    figure>figcaption{
+      grid-area: 1/2;
+    }
+    /* .card figcaption{
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      margin-top: -30px;
+      color: white;
+    } */
+  </style>
+</head>
+<body>
+  <!-- <div class="card">
+    <img src="a.png" alt="">
+    <div>上海钓鱼自然风景 by zhangxinxu</div>
+  </div> -->
+  <figure class="card">
+    <img src="a.png" alt="">
+    <figcaption>上海钓鱼自然风景 by zhangxinxu</figcaption>
+  </figure>
+</body>
+</html>
