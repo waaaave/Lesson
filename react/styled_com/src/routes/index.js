@@ -16,6 +16,7 @@ const SuspenseComponent = Component => props => {
 }
 const AlbumComponent = lazy(() => import('../application/Album/'))
 const RecommendComponent = lazy(() => import('../application/Recommend/'))
+const SearchComponent = lazy(() => import('../application/Search/'))
 // 路由配置
 export default [{
   component: BlankLayout,
@@ -38,6 +39,10 @@ export default [{
               component: SuspenseComponent(AlbumComponent)
             }
           ]
+        },
+        {
+          path: "/search",
+          component:SuspenseComponent(SearchComponent)
         }
       ]
     },
