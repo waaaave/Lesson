@@ -1,0 +1,15 @@
+{
+  "name": "function_code",
+  "version": "1.0.0",
+  "description": "- 为什么要用React hooks?\r - hooks 的本意是什么 -- 钩子",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "^4.0.0"
+  }
+}
