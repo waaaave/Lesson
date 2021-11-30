@@ -3,7 +3,7 @@ import './App.css';
 
 // 类式组件
 // 面向对象思想
-// component 基类中为组件提供了麻斜方法？ --> render
+// component 基类中为组件提供了那些方法？ --> render
 // 类有什么组成 --> 属性 + 方法
 // class Button extends Component{
 //   constructor(props){
