@@ -1,0 +1,16 @@
+{
+  "name": "yangcong",
+  "version": "1.0.0",
+  "description": "- node 计算出来一次请求所花的时间\r   new Date()\r   www.baidu.com req res\r   new Date() -",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "koa": "^2.13.4"
+  }
+}
