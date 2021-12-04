@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>补货</title>
+		<#include "/header.html">
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+			<#if shiro.hasPermission("student:replenishment:save")>
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+			</#if>
+			<#if shiro.hasPermission("student:replenishment:update")>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			</#if>
+			<#if shiro.hasPermission("student:replenishment:delete")>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			</#if>
+
+
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+
+            <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">编号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.number" placeholder="编号"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">品种</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.product" placeholder="品种" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">合同号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.contractNumber" placeholder="合同号" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总货权</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.totalCargoRights" placeholder="总货权"  id="num1" oninput="calculate(this)" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">已发数量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.issuedNum" placeholder="已发数量" id="num2" oninput="calculate(this)" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">待发数量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.readyNum" placeholder="待发数量"  id="num3" readonly="readonly" />
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">补货吨位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.numReplenishmentTonnage" placeholder="补货吨位" id="num4" oninput="calculate(this)" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">补货日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.replenishmentDate" placeholder="补货日期"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">补货后余量</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.numReplenishmentMargin" placeholder="补货后余量" id="num5" readonly="readonly"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">总发运吨位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.totalTonnage" placeholder="总发运吨位" id="num6" readonly="readonly"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">车数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.vehiclesNumber" placeholder="车数" autocomplete="off"/>
+                        </div>
+                    </div>
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">状态</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.state" placeholder="状态"/>
+                        </div>
+                    </div>-->
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">备注</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.memo" placeholder="备注" autocomplete="off"/>
+                        </div>
+                    </div>
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">补货通知责任人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.createBy" placeholder="补货通知责任人"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">补货创建时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.createTime" placeholder="补货创建时间"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">补货修改人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.updateByOne" placeholder="补货修改人"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">补货修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.updateTimeOne" placeholder="补货修改时间"/>
+                        </div>
+                    </div>-->
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">执行补货吨位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.doNumReplenishmentTonnage" placeholder="执行补货吨位"/>
+                        </div>
+                    </div>-->
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">补货执行日期</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.doReplenishmentDate" placeholder="补货执行日期"/>
+                        </div>
+                    </div>-->
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">发货地</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.deliveryPlace" placeholder="发货地"/>
+                        </div>
+                    </div>-->
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">系统录入人员</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.systemEntryPerson" placeholder="系统录入人员"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">现场核查人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.onSiteInspector" placeholder="现场核查人"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">已补货吨位</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.didReplenishmentTonnage" placeholder="已补货吨位"/>
+                        </div>
+                    </div>-->
+											                  <!--  <div class="form-group">
+                        <div class="col-sm-2 control-label">执行补货修改人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.updateByTwo" placeholder="执行补货修改人"/>
+                        </div>
+                    </div>-->
+											                   <!-- <div class="form-group">
+                        <div class="col-sm-2 control-label">执行补货修改时间</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.updateTimeTwo" placeholder="执行补货修改时间"/>
+                        </div>
+                    </div>-->
+											                    <!--<div class="form-group">
+                        <div class="col-sm-2 control-label">流程实例ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="replenishment.processInstanceId" placeholder="流程实例ID"/>
+                        </div>
+                    </div>-->
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<script>
+    function calculate(obj){
+        var num1 = document.getElementById('num1').value;
+        var num2 = document.getElementById('num2').value;
+        document.getElementById('num3').value = num1 - num2;
+        var num3= document.getElementById('num3').value;
+        var num4 = document.getElementById('num4').value;
+        document.getElementById('num5').value = document.getElementById('num3').value - num4;
+        document.getElementById('num6').value = +num2 + +num4;
+
+    }
+</script>
+
+
+
+<script src="${request.contextPath}/statics/js/modules/student/replenishment.js?_${.now?long}"></script>
+</body>
+</html>
