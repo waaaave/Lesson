@@ -1,0 +1,15 @@
+{
+  "name": "Ajax",
+  "version": "1.0.0",
+  "description": "- 异步的js 和 xml \r   - 最大优势->无刷新的获取数据",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
