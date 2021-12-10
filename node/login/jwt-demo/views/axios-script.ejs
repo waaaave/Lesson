@@ -1,0 +1,14 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- axios 配置一次， 每次axios请求都会来到这里 -->
+<!-- 拦截请求 -->
+<!-- interceptors 拦截器 -->
+<script>
+    axios.interceptors.request.use(function(config) {
+        const token = localStorage.getItem('token')
+        if (token) {
+            config.headers.common['Authorization'] = token
+        }
+        return config
+    })
+</script>

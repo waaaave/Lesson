@@ -1,0 +1,16 @@
+<div id="name"></div>
+<script>
+    // console.log('------------------');
+    axios.get('/userInfo')
+        .then(res => {
+            if (res.data.code == 401) {
+                window.location.href = '/login'
+            }
+            if (res.data.code == 200) {
+                const {user} = res.data.user
+                // console.log(user, '///////////');
+                document.getElementById('name').innerHTML = user.name
+            }
+            // console.log(res);
+        })
+</script>
