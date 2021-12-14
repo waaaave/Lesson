@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    const file = new File(["a".repeat(1000000)], 'test.txt')
+    // 上传
+    const chunkSize = 40000
+    const url = 'https://httpbin.org/post'
+    async function chunkUpload() {
+      console.log('------------');
+      for (let start = 0; start < file.size; start+=chunkSize) {
+        const chunk = file.slice(start, start + chunkSize + 1)
+        const fd = new FormData()
+        fd.append('data', chunk)
+        await fetch(url, {method: 'post', body: fd })
+        .then(res => res.text())
+        .then(res => {
+          console.log(res);
+        })
+      }
+    }
+    chunkUpload();
+  </script>
+</body>
+</html>

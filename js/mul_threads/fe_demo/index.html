@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 单线程
+    // 开辟一个多线程 html5 geolocation
+    // 做复杂任务
+    // 主线程 --> 负责DOM操作
+    // 现代前端越来越复杂 --> 大数据 API , 前端的数据可视化(canvas, three.js)
+    // 前端的压缩
+    var worker = new Worker('./work.js')
+    worker.postMessage('Hello World')
+    worker.onmessage = function(event) {
+      console.log('Received message ' + event.data);
+    }
+  </script>
+</body>
+</html>
