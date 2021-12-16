@@ -1,0 +1,11 @@
+.add-container {
+  padding: 1rem;
+  margin-left: 1rem;
+  border: 1px solid #ccc;
+  font-size: 10px !important;
+  margin-bottom: 3rem;
+}
+
+.add-button{
+  border: 0px solid #FFF !important;
+}
