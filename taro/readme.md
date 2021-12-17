@@ -33,3 +33,6 @@
       react 是必学的 
     2. 将数据流引入 redux useReducer
       大型应用更适合 京东到家
+
+- @tarojs/component 基础组件 适配
+- taro-ui 业务组件 60%-70% 提供
