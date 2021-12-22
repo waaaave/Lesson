@@ -34,3 +34,31 @@
     加判断
     return<></>
   }}> 
+
+- 容器类组件
+  Table  Form  Layout
+
+- Layout 首页打造技巧
+  先模块化
+  1. Sider return Layout.Sider menu
+
+- 后台Layout打理， 最忌讳的是一点点组件搭建
+  1. 侧边栏
+    Layout.Sider
+  2. header
+    Menu SubMenu 一级菜单 二级菜单
+  3. Content {{width:calc}}
+    <Route>
+  4. 抽屉
+    全局状态驱动 打开
+
+- antd 布局的理解 
+  1. Row + Col
+  2. Layout
+    后台Layout 先左右 Sider + Layout
+    上中下结构 Header + Content
+
+- redux 驱动状态 组件间
+
+- 后台会有50+ 100+页面
+  设置标题这个细节 react-document-title --> ahooks useTitle

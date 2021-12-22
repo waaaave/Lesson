@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import { setToken } from './utils/auth'
 import './App.css'
 import { reqLogin } from './api/login'
+import { Provider } from 'react-redux'
+import store from './store'
 import Router from './router'
+
 function App() {
 
   // console.log(removeToken());
@@ -17,11 +20,14 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div className="App">
 
-      </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+
+        </div>
+      </Router>
+    </Provider>
 
   )
 }
