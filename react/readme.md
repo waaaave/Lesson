@@ -71,3 +71,15 @@ Input Form 组件 受控组件
   2. 页面级别路由中使用 connect 高阶组件， connect（）（原来UI组件）
   3. mapStateToProps state -> module -> 状态叶节点
   4. 原来的UI组件会通过props 拿到组件树中的状态 只读的状态
+
+- 修改状态流程
+  1. 页面上 映入当前模块的action函数代替原有的函数去取数据或更新
+    useState + useEffect
+    dispatch action 来自action文件
+  2. 异步的action  返回一个带有再次dispatch action能力的函数
+  3. 调用api里面的方法， dispatch 一个同步的action
+  4. action的格式是{type：actionTypes。CHANGE_BANNER， data：‘’}
+    recommend/CHANGE_BANNER
+  5. reducer 重新计算， state 状态更新 界面MVVM 
+  6. 数据的修改很容易出现不同步  redux 推出数据修改流程就是只有action才能请求数据
+    -> action -> api -> action -> 对象{type:,data/payload:} -> reducer -> 匹配准备好的规则
