@@ -1,0 +1,15 @@
+{
+  "name": "curry_manji",
+  "version": "1.0.0",
+  "description": "- 柯里化\r   - 只传递给函数一部分参数来调用它，并让它返回一个函数去处理剩下的参数，当剩下的参数到位后，再执行",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.27.1"
+  }
+}
