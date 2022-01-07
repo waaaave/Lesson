@@ -10,6 +10,22 @@ export const changeMainData = (data) => {
     }
 }
 
+export const setNum = (data) => {
+
+    return {
+        type: actionType.SET_NUM,
+        data: data
+    }
+}
+
+export const setIndex = (data) => {
+
+    return {
+        type: actionType.SET_INDEX,
+        data: data
+    }
+}
+
 export const getMainData = (data) => {
     // api 请求 
     // dispatch一个同步任务
@@ -24,3 +40,4 @@ export const getMainData = (data) => {
             })
     }
 }
+

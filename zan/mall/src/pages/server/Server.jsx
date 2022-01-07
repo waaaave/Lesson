@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 // import './Server.style.js'
 import { connect } from 'react-redux';
 import Scroll from '../../baseUI/scroll';
@@ -37,4 +37,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(Server);
+export default connect(mapStateToProps, mapStateToDispatch)(memo(Server));

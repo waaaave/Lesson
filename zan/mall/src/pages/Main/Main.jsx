@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import Scroll from '../../baseUI/scroll'
 import { connect } from 'react-redux'
 import * as actionTypes from './store/actionCreators'
@@ -55,4 +55,4 @@ const mapStateToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(Main)
+export default connect(mapStateToProps, mapStateToDispatch)(memo(Main))

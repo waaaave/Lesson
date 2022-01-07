@@ -25,46 +25,33 @@
 
 ```
 
-import React from 'react';
-// import './Server.style.js'
-import { connect } from 'react-redux';
-import Scroll from '../../baseUI/scroll';
+import React from 'react'
+import { connect } from 'react-redux'
+import Scroll from '../../baseUI/scroll/index'
 
+const Info = (props) => {
+    const {  } = props
 
-const Server = (props) => {
-
-  const { category } = props
-
-  return (
-    <>
-      <Scroll
-        direction={'vertical'}
-        refresh={false}
-      >
-        <div>
-      Server
-        </div>
-      </Scroll>
-
-    </>
-  );
+    return (
+        <>
+            <Scroll
+                direction="vertical"
+                refresh={false}
+            >
+                <div>
+                    Info
+                </div>
+            
+            </Scroll>
+        </>
+    )
 }
 
 const mapStateToProps = (state) => {
-  return {
-    category: state.server.category
-  }
-}
-
-const mapStateToDispatch = (dispatch) => {
-  return {
-    getMainDataDispatch() {
-      dispatch(actionTypes.getServerData())
+    return {
     }
-  }
 }
-
-export default connect(mapStateToProps, mapStateToDispatch)(Server);
+export default connect(mapStateToProps, {})(Info)
 ```
 
 - swiper 组件打理流程
@@ -84,3 +71,44 @@ export default connect(mapStateToProps, mapStateToDispatch)(Server);
 - 金蝉脱壳
   1. 不像展示的功能直接截图，放到assets目录下
   2. 切页面组件
+
+- 项目考点 做局
+  1. 性能优化
+    路由 懒加载
+    组件 memo connect(mapStateToProps, mapStateToDispatch)(memo(Component))
+    lazyload 图片
+    雪碧图 用一张大图片代替一堆的小图片， 虽然体积变大了但是有效的减小了请求数
+      base64 图片webpack 打包时自动转换 放在css 文件中 
+      这是 Google 十年前的页面性能优化利器 一个网页一张图
+      base64 也是Google发明的
+      过时了
+  
+  2. 样式组件
+
+  3. better-scroll
+
+  4. 组件化风格
+
+- 页面 路由
+  1. 路由页面级别组件 spa
+  2. 页面可以有多个模块
+  3. 路由 / 模块 / user / posts
+    子模块
+  4. 多级路由设计方案
+    /home /home/my /home/server 路由多模块
+    一级路由 整个页面都是他的 除非有 layout
+      /home Tabbuttom  component 
+        tabbar 的空间有了
+        /home/Main
+          二级路由 这个页面
+  5. 提前设计页面模块与路由的关系
+
+- tabbar 切换功能
+  1. 高亮
+  2. 路由
+    1. SPA
+    2. 匹配
+    3. 匹配完成之后 组件落地
+      route.renderRoutes()
+    - 分开来的路由
+    - router
