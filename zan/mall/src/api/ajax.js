@@ -15,7 +15,7 @@ export default function Ajax(url, data = {}, type = 'GET') {
         Promise.then((response) => {
             resolve(response);
         }).catch((error) => {
-            console.error("数据请求异常！", error)
+            console.error("数据请求异常!", error)
         })
     })
 

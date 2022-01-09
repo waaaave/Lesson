@@ -1,5 +1,5 @@
 import * as actionType from './constants.js';
-import { reqmain } from '../../../api/index.js'
+import { reqmain } from '../../../api/index'
 
 //主页数据
 export const changeMainData = (data) => {
@@ -10,25 +10,23 @@ export const changeMainData = (data) => {
     }
 }
 
-export const setNum = (data) => {
-
+export const changeNum = (data) => {
+    // console.log("进去成功...............");
     return {
         type: actionType.SET_NUM,
         data: data
     }
 }
 
-export const setIndex = (data) => {
-
+export const changeIndex = (data) => {
+    // console.log("进去成功...............");
     return {
         type: actionType.SET_INDEX,
         data: data
     }
 }
 
-export const getMainData = (data) => {
-    // api 请求 
-    // dispatch一个同步任务
+export const getMainData = () => {
     return (dispatch) => {
         reqmain()
             .then((res) => {
@@ -36,8 +34,7 @@ export const getMainData = (data) => {
                 dispatch(changeMainData(res.data.data))
             })
             .catch((e) => {
-                console.log('error', e);
+                console.log('出错了');
             })
     }
 }
-

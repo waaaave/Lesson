@@ -4,31 +4,27 @@ import Scroll from '../../../baseUI/scroll'
 
 const Classify = (props) => {
     const { classify } = props
-
+    console.log(classify, '///////////');
     return (
         <>
-            <Scroll
-                direction="horizental"
-                refresh={true}
-            >
+            <Scroll direction="horizental" refresh={true}>
                 <div className="classify">
-                    <div className="classify-box">
-                    {
-                        classify.map((item, index) => {
-                            return (
-                                <span 
-                                    className="classify-item"
-                                    key={index}
-                                    onClick={() => {
-                                        handleclick(item)
-                                    }}
-                                >{item}</span>
-                            )
-                        })
-                    }
+                    <div className='classify-box'>
+                        {
+                            classify.map((item, index) => {
+                                return (
+                                    <span className='classify-item'
+                                        key={index}
+                                        onClick={() => {
+                                            handleClick(item)
+                                        }}>{item}</span>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </Scroll>
+
         </>
     )
 }

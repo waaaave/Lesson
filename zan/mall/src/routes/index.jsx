@@ -3,8 +3,8 @@ import BlankLayout from '../layouts/BlankLayout';
 import { Redirect, Link } from 'react-router-dom';
 const Main = lazy(()=> import('../pages/Main/Main'));
 const Server = lazy(()=> import('../pages/server/Server'));
-const Info = lazy(()=> import('../pages/info/Info.jsx'));
-const My = lazy(()=> import('../pages/my/My.jsx'));
+const Info = lazy(()=> import('../pages/Info/info'));
+const My = lazy(()=> import('../pages/My/my'));
 import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
 const SuspenseComponent = Component => props => {
@@ -39,6 +39,7 @@ export default [{
                 },
                 {
                     path: '/home/server',
+                    // 封装SuspenseComponent函数 动态路由， 当切换到对应路由时，才加载对应组件
                     component: SuspenseComponent(Server),
                 },
                 {
@@ -48,7 +49,8 @@ export default [{
                 {
                     path: '/home/my',
                     component: SuspenseComponent(My),
-                }
+                },
+
             ]
         }
     ]

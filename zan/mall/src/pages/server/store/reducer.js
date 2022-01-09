@@ -1,7 +1,7 @@
 // import * as actionTypes from './constants';
 
 const defaultstate = {
-    category:[]
+    category: []
 }
 
 const reducer = (state = defaultstate, action) => {

@@ -98,3 +98,6 @@ button {
   height: 0.2rem;
   width: 100%;
 }
+ul, li {
+  list-style: none;
+}

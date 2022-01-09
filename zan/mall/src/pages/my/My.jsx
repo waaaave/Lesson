@@ -1,27 +1,19 @@
-import React, { memo } from 'react'
-import { connect } from 'react-redux'
-import Scroll from '../../baseUI/scroll/index'
+import React, {memo} from "react";
+import { connect } from "react-redux";
 
-const My = (props) => {
-    const {  } = props
+const My = () => {
 
     return (
         <>
-            <Scroll
-                direction="vertical"
-                refresh={false}
-            >
-                <div>
-                    My
-                </div>
-            
-            </Scroll>
+        MY
         </>
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
     return {
+        
     }
 }
+
 export default connect(mapStateToProps, {})(memo(My))

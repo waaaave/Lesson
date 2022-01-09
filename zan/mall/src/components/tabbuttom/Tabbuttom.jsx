@@ -1,15 +1,18 @@
-import React, { memo } from 'react'
+import React,{memo} from 'react'
 import { renderRoutes } from 'react-router-config';
-import { Link } from 'react-router-dom'
-import './bottom.css'
-import { connect } from 'react-redux';
-import HeadNumIcon from '../../common/headNumIcon/HeadNumIcon.jsx'
+import { Link, useLocation } from 'react-router-dom'
+import './botton.css'
+import { connect } from 'react-redux'
+import HeadNumIcon from '../../common/headNumIcon/HeadNumIcon'
 import { actionCreators } from '../../pages/Main/store';
 
 const Bottom = (props) => {
-    const { route, num, index } = props;
-    const { setIndexDispatch } = props
-
+    // const index = 0;
+    let { route, index, num } = props;
+    const { pathname} = useLocation()
+    // 根据用户的路由地址匹配index 非首页
+    index = route.routes.findIndex(item => item.path == pathname) - 1
+    const { changeIndex } = props;
     return (
         <>
 
@@ -18,7 +21,7 @@ const Bottom = (props) => {
         {renderRoutes(route.routes)}
         <ul className="Botton-warper">
             <li 
-            onClick={()=>{setIndexDispatch(0)}}
+            onClick={()=>{changeIndex(0)}}
             className="Botton-warper-warp" 
             key="1">
                 <Link to="/home/main" 
@@ -37,7 +40,7 @@ const Bottom = (props) => {
                 </Link>
             </li>
             <li className="Botton-warper-warp" key="2"
-                onClick={()=>{setIndexDispatch(1)}}>
+                onClick={()=>{changeIndex(1)}}>
                     <Link to='/home/server' style={{textDecoration:"none"}}>
                         {/* style={{ backgroundPosition: "-1.685rem 0px" }} */}
                         <div className="icon" style={
@@ -50,7 +53,7 @@ const Bottom = (props) => {
                     </Link>
                 </li>
                 <li className="Botton-warper-warp" key="3"
-                onClick={()=>{setIndexDispatch(2)}}>
+                onClick={()=>{changeIndex(2)}}>
                 <Link to='/home/info' style={{textDecoration:"none"}}>
                 {/* style={{backgroundPosition:"-93px 0px"}} */}
                     <div className="icon" 
@@ -60,18 +63,14 @@ const Bottom = (props) => {
                         {backgroundPosition:"-2.528rem 0px"}}></div>
                     <div className="planet"style={index===2?{color:"#ec564b"}:{}} >
                             消息
-                            <HeadNumIcon
-                              display="" 
-                              top="-0.92rem" 
-                              left="1.5rem" 
-                              num="9"/>
+                            <HeadNumIcon display="" top="-0.92rem" left="1.5rem" num="9"/>
                     </div>
                 </Link>
 
                 </li>
                 <li className="Botton-warper-warp" key="4"
                 onClick={()=>{
-                  setIndexDispatch(3);
+                    changeIndex(3);
                 } }>
                     <Link to='/home/my' style={{textDecoration:"none"}}>
 
@@ -92,20 +91,21 @@ const Bottom = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return{
-    num: state.main.num,
-    index: state.main.index
-  }
-}
-
-// 要有Dispatch的能力
-// 要有一个返回值 并且是一个对象
-const mapStateToDispatch = (dispatch) => {
-  return {
-    setIndexDispatch(index) {
-      dispatch(actionCreators.setIndex(index))
+    return {
+        num: state.main.num,
+        index: state.main.index
     }
-  }
 }
 
-export default connect(mapStateToProps,mapStateToDispatch)(memo(Bottom))
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeIndex(index) {
+            // console.log(index,'----------------');
+            console.log(actionCreators.changeIndex(index),'+++++++++++++++++++++++++++');
+            
+            dispatch(actionCreators.changeIndex(index))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(memo(Bottom))

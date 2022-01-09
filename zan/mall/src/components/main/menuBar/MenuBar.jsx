@@ -6,6 +6,7 @@ import "swiper/css/swiper.min.css";
 
 function MenuBar(props) {
     const { menuBarData } = props
+    // console.log(menuBarData.list1,'//////////////////////////');
     useEffect(() => {
         new Swiper('.swiper-container-menu', {
             scrollbar: {
@@ -21,15 +22,15 @@ function MenuBar(props) {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">
                             <div>
-                                <MenuBarItem menuBarData={menuBarData.list1}/>
-                                <MenuBarItem menuBarData={menuBarData.list2}/>
+                                <MenuBarItem MenuBarData={menuBarData.list1}/>
+                                <MenuBarItem MenuBarData={menuBarData.list2}/>
                             </div>
                         </div>
                         <div className="swiper-slide"
                         style={{width: '100%'}}>
                             <div>
-                                <MenuBarItem menuBarData={menuBarData.list3}/>
-                                <MenuBarItem menuBarData={menuBarData.list4}/>
+                                <MenuBarItem MenuBarData={menuBarData.list3}/>
+                                <MenuBarItem MenuBarData={menuBarData.list4}/>
                             </div>
                         </div>
                     </div>

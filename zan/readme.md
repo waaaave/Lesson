@@ -7,3 +7,6 @@
     ts + mysql + node 
   4. 实战中
     react + ts + node + 性能优化 + 组件
+
+  - 项目上线服务器
+    1. gitee 配置 gitee pages 服务
