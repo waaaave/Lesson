@@ -5,3 +5,7 @@ import Ajax from './ajax.js'
 export const reqmain = () => {
     return Ajax('/home/main')
 }
+
+export const reqlist = (page) =>{
+    return Ajax('/home/list', {page})
+}

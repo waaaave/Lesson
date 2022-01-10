@@ -106,3 +106,12 @@ export default connect(mapStateToProps, {})(Server)
     4.组件化风格
     4.hooks编程风格 比如在tabbar切换时用了useLocation
     
+- 首页长列表业务怎么做
+    1. 后端 ctx.request.query {limit, page}
+    2. mockjs Mock.mock 20
+    3. 页面可以用redux（数据流处理的一致性） 或usestate（） mvvm
+    4. 列表图片的性能优化
+      react-lazyload
+      包装img placeholder
+    5. betterscroll scroll onScroll
+      react-lazyload forceCheck

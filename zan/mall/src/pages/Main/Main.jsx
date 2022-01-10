@@ -12,84 +12,114 @@ import SearchInput from '../../components/searchInput/SearchInput'
 import MainPopup from '../../components/mainPopup/MainPopup'
 import HomeService from '../../components/homeService/HomeService'
 import FramLayout from '../../components/framLayout/FramLayout'
+import ListData from '../../components/main/listData/ListData.jsx'
+import * as api from '../../api'
+import { forceCheck } from 'react-lazyload'
 
 const Main = (props) => {
-    // 状态
-    const { maindata } = props
-    const [showPopup, setShowPopup] = useState(false)
-    const [diaplay, setDisplay] = useState(false)
-    // action
-    const history = useHistory()
-    const { getMainDataDispatch } = props
-    const { classify=[],  rotationImg=[], menuBarData = {} } = maindata
+  // 状态
+  const [list, setList] = useState([])
+  const { maindata } = props
+  const [showPopup, setShowPopup] = useState(false)
+  const [diaplay, setDisplay] = useState(false)
+  // action
+  const history = useHistory()
+  const { getMainDataDispatch } = props
+  const { classify = [], rotationImg = [], menuBarData = {} } = maindata
+  let [page, setPage] = useState(1)
 
-    console.log(maindata)
-    useEffect(() => {
-        if (!maindata.length) {
-            getMainDataDispatch()
-        }
-    }, [])
 
-    const handleOnclick = () => {
-        // popup 组件显示与否
-        // console.log(showPopup,'2222222222222222222222');
-        setShowPopup(!showPopup)
+  const fetchList = () => {
+    api
+      .reqlist(page)
+      .then(res => {
+        // console.log(res.data.data.list);
+        setList([
+          ...list,
+          ...res.data.data.list])
+      })
+  }
+
+  // console.log(maindata)
+  useEffect(() => {
+    if (!maindata.length) {
+      getMainDataDispatch()
     }
-    // 上拉加载更多
-    const handlePullUp = () => {
-        console.log('上拉加载更多');
-    }
-    // 下拉刷新
-    const handlePullDown = () => {
-        console.log('下拉刷新');
-    }
+    fetchList()
     
-    return (
-        <div className="main">
-            <SearchInput handleOnclick={() => {handleOnclick()}} 
-                searchBoxHandleOnclick={() => history.push('/search')} />
-            <MainPopup handleOnclick={handleOnclick} display={showPopup} />
-            
-            
-            <Scroll
-                direction={"vertical"}
-                refresh={false}
-                onScroll={
-                    (e)=>{
-                        // console.log(e);
-                        // console.log(e.y);
-                        if (e.y < -1142) {
-                            setDisplay(true)
-                        }else {
-                            setDisplay(false)
-                        }
-                    }
-                }
-                    pullUp={handlePullUp}
-                    pullDown={handlePullDown} >
-                <div className="main-padding">
-                    <Classify classify={classify}/>
-                    <RotationChart rotationImg={rotationImg}/>
-                    <MenuBar menuBarData={menuBarData}/>
-                    <ImgList />
-                    <HomeService />
-                    <FramLayout />
-                </div>
-            </Scroll>
+  }, [])
+
+  useEffect(() => {
+    // 不用redux redux 跨组件传值时使用
+    // api
+    fetchList()
+    
+  }, [page])
+
+  const handleOnclick = () => {
+    // popup 组件显示与否
+    // console.log(showPopup,'2222222222222222222222');
+    setShowPopup(!showPopup)
+  }
+  // 上拉加载更多
+  const handlePullUp = () => {
+    console.log('上拉加载更多');
+    setPage(++page)
+  }
+  // 下拉刷新
+  const handlePullDown = () => {
+    console.log('下拉刷新');
+  }
+
+  return (
+    <div className="main">
+      <SearchInput handleOnclick={() => { handleOnclick() }}
+        searchBoxHandleOnclick={() => history.push('/search')} />
+      <MainPopup handleOnclick={handleOnclick} display={showPopup} />
+
+
+      <Scroll
+        direction={"vertical"}
+        refresh={false}
+        onScroll={
+          (e) => {
+            // console.log(e);
+            // console.log(e.y);
+            if (e.y < -1142) {
+              setDisplay(true)
+            } else {
+              setDisplay(false)
+            }
+          forceCheck()
+          }
+        }
+        pullUp={handlePullUp}
+        pullDown={handlePullDown} >
+        <div className="main-padding">
+          <Classify classify={classify} />
+          <RotationChart rotationImg={rotationImg} />
+          <MenuBar menuBarData={menuBarData} />
+          <ImgList />
+          <HomeService />
+          <FramLayout />
+          <ListData list={list} />
         </div>
-    )
+        
+      </Scroll>
+    </div>
+  )
 }
 const mapStateToPorps = (state) => {
-    return {
-        maindata: state.main.maindata
-    }
+  return {
+    maindata: state.main.maindata
+  }
 }
 const mapStateToDispatch = (dispatch) => {
-    return {
-        getMainDataDispatch() {
-            dispatch(actionTypes.getMainData())
-        }
+  return {
+    getMainDataDispatch() {
+      dispatch(actionTypes.getMainData())
     }
+  }
 }
 
 export default connect(mapStateToPorps, mapStateToDispatch)(Main)
