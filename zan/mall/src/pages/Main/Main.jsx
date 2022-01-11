@@ -13,6 +13,7 @@ import MainPopup from '../../components/mainPopup/MainPopup'
 import HomeService from '../../components/homeService/HomeService'
 import FramLayout from '../../components/framLayout/FramLayout'
 import ListData from '../../components/main/listData/ListData.jsx'
+import  MainBottomChooseCopy  from '@/components/main/mainBottomChooseCopy/MainBottomChooseCopy.jsx'
 import * as api from '../../api'
 import { forceCheck } from 'react-lazyload'
 
@@ -20,6 +21,7 @@ const Main = (props) => {
   // 状态
   const [list, setList] = useState([])
   const { maindata } = props
+  const [ menuDisplay, setMenuDisplay ] = useState(0)
   const [showPopup, setShowPopup] = useState(false)
   const [diaplay, setDisplay] = useState(false)
   // action
@@ -75,8 +77,6 @@ const Main = (props) => {
     <div className="main">
       <SearchInput handleOnclick={() => { handleOnclick() }}
         searchBoxHandleOnclick={() => history.push('/search')} />
-      <MainPopup handleOnclick={handleOnclick} display={showPopup} />
-
 
       <Scroll
         direction={"vertical"}
@@ -86,9 +86,9 @@ const Main = (props) => {
             // console.log(e);
             // console.log(e.y);
             if (e.y < -1142) {
-              setDisplay(true)
+              setMenuDisplay(1)
             } else {
-              setDisplay(false)
+              setMenuDisplay(0)
             }
           forceCheck()
           }
@@ -104,6 +104,9 @@ const Main = (props) => {
           <FramLayout />
           <ListData list={list} />
         </div>
+        <MainBottomChooseCopy display={menuDisplay} />
+
+        <MainPopup handleOnclick={handleOnclick} display={showPopup} />
         
       </Scroll>
     </div>
