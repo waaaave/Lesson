@@ -2,15 +2,20 @@ import React, { memo } from 'react';
 import { List, TextContent } from './ListItem.style.js';
 import Lazyload from 'react-lazyload'
 import loading from '../../../../assets/images/loading.gif'
+import { useHistory } from 'react-router-dom';
 
 const ListItem = (props) => {
   const { item } = props;
-  // console.log(item, '///////')
+  // console.log(item.id, '///////')
+  const history = useHistory()
+  const gotoDetail = (id) => {
+    history.push(`/detail/${id}`)
+  }
 
   return (
     <>
 
-      <List key={item.id}>
+      <List key={item.id} onClick={() => gotoDetail(item.id)}>
         <TextContent>
           <div className="ListItem-title">
             {item.title}

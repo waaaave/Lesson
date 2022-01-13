@@ -3,8 +3,9 @@ import BlankLayout from '../layouts/BlankLayout';
 import { Redirect, Link } from 'react-router-dom';
 const Main = lazy(()=> import('../pages/Main/Main'));
 const Server = lazy(()=> import('../pages/server/Server'));
-const Info = lazy(()=> import('../pages/Info/info'));
-const My = lazy(()=> import('../pages/My/my'));
+const Info = lazy(()=> import('../pages/info/Info'));
+const My = lazy(()=> import('../pages/my/My'));
+const Detail = lazy(()=> import('../pages/detail/Detail'));
 import Tabbuttom from '../components/tabbuttom/Tabbuttom';
 
 const SuspenseComponent = Component => props => {
@@ -52,7 +53,17 @@ export default [{
                 },
 
             ]
-        }
+        },
+        {
+            path: '/detail',
+            component: SuspenseComponent(Detail),
+            routes: [
+                {
+                    path:"/detail/:id",
+                    component:SuspenseComponent(Detail),
+                }
+            ]
+        },
     ]
 }]
 

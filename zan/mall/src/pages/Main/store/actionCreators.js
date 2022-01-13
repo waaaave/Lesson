@@ -30,7 +30,7 @@ export const getMainData = () => {
     return (dispatch) => {
         reqmain()
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 dispatch(changeMainData(res.data.data))
             })
             .catch((e) => {

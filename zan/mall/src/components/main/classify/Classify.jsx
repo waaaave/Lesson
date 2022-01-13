@@ -4,7 +4,6 @@ import Scroll from '../../../baseUI/scroll'
 
 const Classify = (props) => {
     const { classify } = props
-    console.log(classify, '///////////');
     return (
         <>
             <Scroll direction="horizental" refresh={true}>
