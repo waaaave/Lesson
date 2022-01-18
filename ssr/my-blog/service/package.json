@@ -1,0 +1,21 @@
+{
+  "name": "service",
+  "version": "1.0.0",
+  "description": "- service /api\r   MVC mysql + koa\r - client SSR 呈现方式",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env PORT=8888 nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "ejs": "^3.1.6",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0",
+    "require-directory": "^2.1.1"
+  }
+}
