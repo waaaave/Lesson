@@ -34,3 +34,38 @@ ssr 应用往往是全栈开发的标配
 - 虚拟DOM 内存编译
   webpack 为提升编译速度， 在开发阶段， 编译到内存
   build 才生成 dist文件
+
+- design dbs 
+  - book
+    从服务端book list /book/:id
+    在服务器端拿完 编译再输出 SEO
+    CREATE TABLE book (
+      `id` INT UNSIGNED AUTO_INCREMENT,
+      `name` VARCHAR(100),
+      `URL` VARCHAR(255),
+      `img` VARCHAR(255),
+      `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      `deleted_at` TIMESTAMP NULL,
+      PRIMARY KEY(id)
+    )engine=innodb
+
+- InitManger koa 中枢
+  1. 在入口文件开始启动  要克制
+    InitManager.initCore(app)
+  2. core/
+      InitManager
+      2.1  InitManager.initLoadRouters(app) 初始化加载路由
+        requireDirectory
+      2.2  initModels 初始化模型， 为了获得 squelize
+  3. 链接数据库
+    const m = require('../models/index')
+  4.  const { db } = require('../core/db')
+      /core/db 链接数据库， 返回当前实例
+  5. mysql 使用的sql对于node来说是一门外语，sequelize是翻译
+    5.1 在models/index.js中 做ORM映射
+      任何一个sequelized Model上有 init 方法 传递一个对象 根据每个字段进行类型的定义
+    5.2 book.js
+      extends Model
+    5.3 Book.create({传值})
+    

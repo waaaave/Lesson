@@ -18,8 +18,10 @@ class InitManager {
       }
     })
   }
-  initModels(app){
+  static initModels(app){
+    const m = require('../models/index')
     
+    m.init()
   }
 }
 
