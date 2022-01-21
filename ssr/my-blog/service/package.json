@@ -4,7 +4,7 @@
   "description": "- service /api\r   MVC mysql + koa\r - client SSR 呈现方式",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env PORT=8888 nodemon index.js"
+    "dev": "cross-env PORT=4000 nodemon index.js"
   },
   "keywords": [],
   "author": "",

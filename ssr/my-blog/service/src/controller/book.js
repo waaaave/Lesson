@@ -3,8 +3,16 @@ const {
 } = require('../models/book');
 
 module.exports = {
-  async getList() {
-    console.log('getList');
+  async getList(ctx) {
+    // console.log('getList');
+    const rows = await Book.findAll();
+    // console.log(rows,'22222222222222222222222222222');
+    ctx.body = {
+      msg:'OK',
+      code:'0000',
+      data: rows,
+      request: `${ctx.method}${ctx.path}`
+    }
 
   },
   async getOne() {
