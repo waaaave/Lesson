@@ -8,7 +8,7 @@ export default class Queue<T> {
   private lowestCount: number;
   // key value
   // 队头 队尾
-  private items: Map<number, T>;
+  private items: Map<number, T | undefined>;
 
   constructor(){
 
@@ -18,7 +18,7 @@ export default class Queue<T> {
 
   }
 
-  enqueue(element: T): void{
+  enqueue(element: T | undefined): void{
     this.items.set(this.count, element)
     this.count++
   }
@@ -26,7 +26,6 @@ export default class Queue<T> {
   dequeue(): T|undefined{
     if (this.isEmpty()){
       return undefined
-
     }
     // 问题 是否为空
     const result:T | undefined = this.items.get(this.lowestCount)
