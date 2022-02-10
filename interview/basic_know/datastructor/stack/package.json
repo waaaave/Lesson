@@ -1,0 +1,16 @@
+{
+  "name": "stack",
+  "version": "1.0.0",
+  "description": "- 什么时候用到栈\r   FILO  LIFO\r   数据集合\r   结构\r   行为\r   当我们需要经常存取刚放进去的数据时，栈是首选\r - 进制转换\r   十进制转二进制\r   进制转换的过程中的每一个余数入栈行为确保了进制转化计算的正确\r   结果是 出栈至空",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  }
+}
