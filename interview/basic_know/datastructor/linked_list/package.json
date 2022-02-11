@@ -1,0 +1,19 @@
+{
+  "name": "linked_list",
+  "version": "1.0.0",
+  "description": "- 为什么语言中默认数组为最常见的数据结构，而不是链表",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  }
+}
