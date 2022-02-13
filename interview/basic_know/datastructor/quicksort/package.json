@@ -1,0 +1,12 @@
+{
+  "name": "quicksort",
+  "version": "1.0.0",
+  "description": "- 快排命名如何而来？\r   - 排序效率 块 O(nlogn)\r   - O(n) 桶排序 计数 基数排序 因为空间复杂度 退出了竞争\r   - 写起来块\r     分治思想 + 递归\r     当满足退出条件时\r   - 学起来块",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
