@@ -1,8 +1,7 @@
 import React from "react";
 import styles from './Header.module.css'
-import {Layout, Typography, Input, Dropdown, Menu, Button} from 'antd'
+import {Layout, Typography, Input, Dropdown, Menu} from 'antd'
 import { GlobalOutlined } from '@ant-design/icons' 
-import logo from '../../assets/logo.svg'
 import {useSelector} from '../../redux/hooks'
 import {useDispatch} from 'react-redux'
 import {changeLanguageActionCreator} from '../../redux/language/languageActions'
