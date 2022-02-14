@@ -56,13 +56,13 @@ for (const index of indices) {
   const x = xs[index]
   const barHeight = barHeights[index]
   const value = values[index]
-
+  
   context.fillStyle = color
-  context.fillReact = (x, y - barHeight, barWidth, barHeight)
+  context.fillRect(x, y - barHeight, barWidth, barHeight)
 
   context.textAlign = 'center'
   context.textBaseline = 'middle'
   context.fillStyle = 'white'
-  context.font = '25px pingFangSC - Regular, sans-serif'
-  context.fillText(value, x + barWidth / 2, y - barHeight / 2)
+  context.font = '25px pingFangSC-Regular, sans-serif'
+  context.fillText(value, x + barWidth / 2, y - barHeight /2 )
 }
