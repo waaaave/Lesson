@@ -1,14 +1,14 @@
 const data = [
   {
-    name:"question",
+    name: "question",
     value: 17
   },
   {
-    name:"schools",
+    name: "schools",
     value: 25
   },
   {
-    name:"philosophers",
+    name: "philosophers",
     value: 35
   }
 ]
@@ -16,12 +16,12 @@ const data = [
 const chartWith = 480;
 const chartHeight = 300;
 const margin = 15
-const containerWidth = chartWith + margin*2
-const containerHeight = chartHeight + margin*2
+const containerWidth = chartWith + margin * 2
+const containerHeight = chartHeight + margin * 2
 
 const names = Array.from(data, (d) => d.name)
 const values = Array.from(data, (d) => d.value)
-const indices = Array.from(data, (_,i) =>i)
+const indices = Array.from(data, (_, i) => i)
 
 const step = chartWith / names.length
 const barWidth = step * 0.8
@@ -49,9 +49,9 @@ canvas.height = containerHeight * 2
 const context = canvas.getContext('2d')
 context.scale(2, 2)
 
-context.translate(margin,margin)
+context.translate(margin, margin)
 
-for(const index of indices){
+for (const index of indices) {
   const color = colors[index]
   const x = xs[index]
   const barHeight = barHeights[index]
