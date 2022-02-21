@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #bt1{
+      width: 300px;
+      height: 300px;
+      background-color: green;
+    }
+    #bt2{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    #bt3{
+      width: 100px;
+      height: 100px;
+      background-color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="bt1">
+    <div id="bt2">
+      <div id="bt3"></div>
+    </div>
+  </div>
+
+  <script>
+    // 默认冒泡机制
+    const bt3 = document.getElementById('bt3')
+    const bt1 = document.getElementById('bt1')
+    const bt2 = document.getElementById('bt2')
+    // DOM0级别 onclick
+    // DOM2级别 addEventListener 存在兼容性问题
+    // DOM2级别 attacheEvent
+
+    // bt3.onclick = function(event){
+    //   console.log(3);
+    // }
+
+    // bt2.onclick = function(event){
+    //   console.log(2);
+    // }
+
+    // bt1.onclick = function(event){
+    //   console.log(1);
+    // }
+
+    bt3.addEventListener('click', function(event){
+      // currentTarget 是事件绑定对象
+      // 触发事件的元素
+      if(event.target === event.currentTarget){
+        console.log(3);
+      }
+      // event.stopPropagation()
+      // console.log(3);
+    }) // 第三个参数 useCapture
+    bt2.addEventListener('click', function(event){
+      if(event.target === event.currentTarget){
+        console.log(2);
+      }
+      // event.stopPropagation()
+      // console.log(2);
+    })
+    bt1.addEventListener('click', function(event){
+      if(event.target === event.currentTarget){
+        console.log(1);
+      }
+      // event.stopPropagation()
+      // console.log(1);
+    })
+
+  </script>
+
+</body>
+</html>
