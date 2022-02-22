@@ -1,8 +1,9 @@
 import express from "express";
-import { validateUserData } from './user.middleware'
+import { validateUserData, hashPassword } from './user.middleware'
+import * as userController from './user.controller'
 
 const router = express.Router();
 
-router.post('/users', validateUserData)
+router.post('/users', validateUserData, hashPassword, userController.store)
 
 export default router

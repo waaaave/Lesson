@@ -18,14 +18,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_middleware_1 = require("./user.middleware");
-const userController = __importStar(require("./user.controller"));
-const router = express_1.default.Router();
-router.post('/users', user_middleware_1.validateUserData, user_middleware_1.hashPassword, userController.store);
-exports.default = router;
-//# sourceMappingURL=user.router.js.map
+exports.store = void 0;
+const userService = __importStar(require("./user.service"));
+const store = async (request, response, next) => {
+    const { name, password } = request.body;
+    try {
+        const data = await userService.createUser({ name, password });
+        response.status(201).send(data);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.store = store;
+//# sourceMappingURL=user.controller.js.map
