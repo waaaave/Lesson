@@ -71,3 +71,22 @@
                 background: #63f
             }
         }
+
+
+    - 502 和504 区别
+        5xx服务器端错误
+        - 迟迟不响应 数据库
+            504 Gateway Timeout
+            多台数据库服务器 就需要一个同步机制
+            中间件  数据库连接中间件 需要一个 timeout 配置
+
+        - java/node/php 等后端错误 
+            502 Bad Gateway
+            js 是单线程的 挂了就停了
+            服务器是多线程的，多核cpu （node中那个模块 使之支持多核运行 cluster）
+            nginx 负载均衡还有代理
+            https 默认端口号 443
+
+    - 类型
+        1. 深入了解JavaScript的基础类型和引用类型
+        2. 隐式类型 遵循强制类型转换原则
