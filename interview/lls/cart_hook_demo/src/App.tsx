@@ -35,7 +35,7 @@ function App() {
     </div>
   )
 
-  const { checkedMap, onCheckedChange} = useChecked(cartData)
+  // const { checkedMap, onCheckedChange} = useChecked(cartData)
 
   return (
     <div className="App">
@@ -45,10 +45,10 @@ function App() {
         bordered
         dataSource={cartData}
         renderItem={item =>{
-          const checked = checkedMap[item.id] || false
+          // const checked = checkedMap[item.id] || false
           return(
             <List.Item>
-              <ItemCard item={item} checked={checked} onCheckedChange={onCheckedChange}/>
+              {/* <ItemCard item={item} checked={checked} onCheckedChange={onCheckedChange}/> */}
             </List.Item>
           )
         }}
