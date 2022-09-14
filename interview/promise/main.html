@@ -5,56 +5,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>promise</title>
+    <title>Document</title>
 </head>
 
 <body>
     <script>
-        const PENDING = 'pending'
-        const FULFILLED ='fulfilled'
-        const REJECTED = 'rejected'
+        // 方便维护 可读性好
+        const PENDING = 'pending';
+        const FULFILLED = 'fulfilled';
+        const REJECTED = 'rejected';
+
         class MyPromise {
             constructor(executor) {
-                //
-                executor(this.resolve, this.reject)// 同步 立即执行
+                // 执行器 
+                // 异步任务完成后， 
+                // this.resolve  状态改变 
+                executor(this.resolve, this.reject) // 同步 立即执行 
             }
-            status = PENDING
+            status = PENDING  // 开始的状态
             value = null
             reason = null
-            // 为什么使用箭头函数
-            // 避免this被覆盖
+            onFulfilledCallbacks = []
+            onRejectedCallbacks = []
+            //为什么用箭头函数
             resolve = (value) => {
-                if(this.status === PENDING){
+                if (this.status === PENDING) { // 不可逆
                     this.status = FULFILLED
                     this.value = value
+                    // 异步
+                    while (this.onFulfilledCallbacks.length) {
+                        this.onFulfilledCallbacks.shift()(value)
+                    }
                 }
             }
             reject = (reason) => {
-                if(this.status === PENDING){
+                if (this.status === PENDING) {
                     this.status = REJECTED
                     this.reason = reason
+                    while (this.onRejectedCallbacks.length) {
+                        this.onRejectedCallbacks.shift()(reason)
+                    }
                 }
-             }
-             then(onFulfilled,onRejected){
-                if (this.status===FULFILLED) {
-                    onFulfilled(this.value)
-                }else if (this.status === REJECTED){
-                    onRejected(this.reason)
-                }
-             }
+            }
+            then(onFulfilled, onRejected) {
+                // 立即运行 
+                // 如果状态为pengding 
+                // 无条件的同步promise
+                const promise2 = new MyPromise((resolve, reject) => {
+                    if (this.status === FULFILLED) {
+                        //同步链式调用
+                        const x = onFulfilled(this.value)
+                        resolvePromise(x, resolve, reject)
+                    } else if (this.status === REJECTED) {
+                        onRejected(this.reason)
+                    } else if (this.status == PENDING) {
+                        this.onFulfilledCallbacks.push(onFulfilled);
+                        this.onRejectedCallbacks.push(onRejected);
+                    }
+                })
+                return promise2
+            }
+        }
+
+        function resolvePromise(x, resolve, reject){
+            if (x instanceof MyPromise) {
+                // x 是同步的话 x 的resolve 就会执行
+                x.then(resolve, reject)
+            }else(
+                resolve(x)
+            )
         }
 
         const promise = new MyPromise((resolve, reject) => {
-            resolve('success')
+            // setTimeout(() => {
+            resolve('success') // 异步 
+            // }, 0)
+
             // 无效
-            // reject('error') 
+            // 普通函数
+            // reject('err')
         })
-        // catch 还没上场 可以接受可选的两个参数
+        // catch 还没上场， 可选的  2个参数 
+        // promise.then(value => {
+        //     console.log('resolve', value);
+        // }, reason => {
+        //     console.log('reject', reason);
+        // })
+        // 参数是可选的
+
+        function other() {
+            return new MyPromise((resolve, reject) => {
+                resolve('other') // 同步
+            })
+        }
+
         promise.then(value => {
-            console.log('resolve', value);
-        }, reason => {
-            console.log('reject', reason);
+            console.log(1)
+            console.log('resolve', value)
+            return other()
+        }).then(value => {
+            console.log(2)
+            console.log('resolve', value)
+            return 666
+        }).then(value => {
+            console.log(value);
         })
+
+
+// promise.then(value => {
+//     console.log(3)
+//     console.log('resolve',value)
+// })
+
+
 
 
     </script>

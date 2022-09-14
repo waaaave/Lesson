@@ -36,3 +36,18 @@
         onFullfilledCallback
         onRejectedCallback
         执行一下
+        5. promise then 链式调用
+        p1
+            .then(f1)
+            .then(f2)
+
+- promise 手写历程
+    1. es6类式编程 + 新特性
+    2. constructor 传入一个executor同步
+    3. then
+        1. 实例自己的then
+        2. 实例的多个then
+        3. 链式调用的then
+        三个都是同步的
+    4. 异步在executor里面
+        缓存的onFulfilledCallback 运行
